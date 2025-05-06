@@ -20,12 +20,12 @@ function addition(vectorOne, vectorTwo) {
     ];
 }
 
-function distance(x, y) {
+function magnitudeOfVector(x, y) {
     return Math.sqrt(x * x + y * y);
 }
 
 function setMagnitude(magnitude, vector) {
-    const d = distance(vector[0], vector[1]);
+    const d = magnitudeOfVector(vector[0], vector[1]);
     const proportion = magnitude / d;
 
     return [
@@ -119,7 +119,7 @@ function randomValue(min = 0, max = 0) {
 }
 
 function limitMaxMagnitude(limit, vector) {
-    const d = distance(vector[0], vector[1]);
+    const d = magnitudeOfVector(vector[0], vector[1]);
 
     if (limit < d) {
         const proportion = limit / d;
@@ -163,7 +163,7 @@ class Fish extends Arm {
                 this.velocity[0] += ((margin) - nextPosition) / margin;
             }
             else { // dont dampen the velocity
-                if (distance(this.velocity[0], this.velocity[1]) < this.minVelocity) {
+                if (magnitudeOfVector(this.velocity[0], this.velocity[1]) < this.minVelocity) {
                     this.velocity = setMagnitude(this.maxVelocity, this.velocity);
                 }
             }
@@ -186,7 +186,7 @@ class Fish extends Arm {
                 this.velocity[1] += ((margin) - nextPosition) / margin;
             }
             else { // dont dampen the velocity
-                if (distance(this.velocity[0], this.velocity[1]) < this.minVelocity) {
+                if (magnitudeOfVector(this.velocity[0], this.velocity[1]) < this.minVelocity) {
                     this.velocity = setMagnitude(this.maxVelocity, this.velocity);
                 }
             }
